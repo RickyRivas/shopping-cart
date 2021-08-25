@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Styles -->
+    <link href='styles/main.css' rel='stylesheet'>
+    <title>Javascript Shopping Cart</title>
+</head>
+<body>
+    <!-- Nav Start -->
+    <nav class='navbar'>
+        <div class="navbar-center">
+            <span class="nav-icon">
+                <img src='images/menu.svg' class='toggle' alt='hamburger toggle'>
+            </span>
+            <img src='images/logo.svg' class='logo' alt='Logo'>
+            <div class='cart-btn'>
+                <span class='cart-icon'>
+                    <img src="images/shopping-cart.svg" alt="">
+                </span>
+                <div class='cart-items'>0</div>
+            </div>
+        </div>
+    </nav>
+    <!-- Nav End  -->
+    <!-- Hero Start -->
+    <header class='hero'>
+        <div class='banner'>
+            <h1 class='banner-title'>Furniture Collection</h1>
+            <button class='banner-btn'>Shop Now</button>
+        </div>
+    </header>
+    <!-- Hero End -->
+    <!-- Products Start -->
+    <section class='products'>
+        <div class='section-title'>
+            <h2>Our Products</h2>
+        </div>
+        <div class='products-center'>
+            <!-- Cart Start -->
+            <div class='cart-overlay'>
+                <div class='cart'>
+                    <span class='close-cart'>X</span>
+                    <h2>Your cart</h2>
+                    <div class='cart-content'>
+                        <!-- Cart Item -->
+                        <div class='cart-item'>
+                            <!-- <img src='images/product-1.jpeg' alt='product' class='cart-product-img'>
+                            <div>
+                                <h4>Queen Bed</h4>
+                                <h5>$9</h5>
+                                <span class='remove-item'>Remove</span>
+                            </div>
+                            <div>
+                                <img src='images/arrow-up.svg' class='standard-icon' alt=''>
+                                <p class='item-amount'></p>
+                                <img src='images/arrow-down.svg' class='standard-icon' alt=''>
+                            </div> -->
+                        </div>
+                        <!-- Cart Item -->
+                        <div class='cart-footer'>
+                            <h3>Your total: $<span class='cart-total'>0</span></h3>
+                            <button class='clear-cart banner-btn'>Clear Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Cart End -->
+        </div>
+    </section>
+    <!-- Products End -->
+    <script src='scripts/app.js'></script>
+</body>
+</html>
