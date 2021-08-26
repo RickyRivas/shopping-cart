@@ -116,9 +116,9 @@ class UI {
                                 <span class='remove-item' data-id=${item.id}>Remove</span>
                             </div>
                             <div>
-                                <img src='images/arrow-up.svg' data-id=${item.id} class='standard-icon' alt=''>
+                                <img src='images/arrow-up.svg' data-id=${item.id} class='up-quantity-icon icon' alt=''>
                                 <p class='item-amount'>${item.amount}</p>
-                                <img src='images/arrow-down.svg' data-id=${item.id} class='standard-icon' alt=''>
+                                <img src='images/arrow-down.svg' data-id=${item.id} class='down-quantity-icon icon' alt=''>
                             </div>
         `
         cartContent.appendChild(div); 
@@ -140,6 +140,66 @@ class UI {
     hideCart() {
         cartOverlay.classList.remove('transparentBcg');
         cartDOM.classList.remove('showCart');
+    }
+    cartLogic() {
+        // Clear cart button 
+        clearCartBtn.addEventListener('click', () => {
+            this.clearCart();
+        })
+        // cart functionality
+        cartContent.addEventListener('click', event => {
+            if (event.target.classList.contains('remove-item')) {
+                let removeItem = event.target;
+                let id = removeItem.dataset.id;
+                cartContent.removeChild(removeItem.parentElement.parentElement);
+                this.removeItem(id);
+
+            } else if (event.target.classList.contains('up-quantity-icon')) {
+                let addAmount = event.target;
+                let id = addAmount.dataset.id;
+                let tempItem = cart.find(item => item.id === id);
+                tempItem.amount = tempItem.amount + 1;
+                Storage.saveCart(cart);
+                this.setCartValues(cart);
+                addAmount.nextElementSibling.innerText = tempItem.amount;
+
+          } else if (event.target.classList.contains('down-quantity-icon')) {
+                let lowerAmount = event.target;
+                let id = lowerAmount.dataset.id;
+                let tempItem = cart.find(item => item.id === id);
+                tempItem.amount = tempItem.amount - 1;
+
+                if (tempItem.amount > 0) {
+                    Storage.saveCart(cart);
+                    this.setCartValues(cart);
+                    lowerAmount.previousElementSibling.innerText = tempItem.amount;
+                } else {
+                    cartContent.removeChild(lowerAmount.parentElement.parentElement);
+                    this.removeItem(id);
+                }
+          }
+        })
+    }
+    // function for clearing cart
+    clearCart() {
+        let cartItems = cart.map(item => item.id);
+        cartItems.forEach(id => this.removeItem(id));
+        console.log(cartContent.children)
+        while (cartContent.children.length > 0) {
+            cartContent.removeChild(cartContent.children[0])
+        }
+        this.hideCart();
+    }
+    removeItem(id) {
+        cart = cart.filter(item => item.id !== id)
+        this.setCartValues(cart);
+        Storage.saveCart(cart);
+        let button = this.getSingleButton(id);
+        button.disabled = false;
+        button.innerHTML = `add to cart`;
+    }
+    getSingleButton(id) {
+        return buttonsDOM.find(button => button.dataset.id === id)
     }
 }
 
@@ -172,5 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
         Storage.saveProducts(products);
     }).then(() => {
         ui.getBagButtons();
+        ui.cartLogic();
     });
 });

@@ -26,6 +26,11 @@ body {
   height: 2em;
 }
 
+.icon {
+  width: 1em;
+  height: 1em;
+}
+
 /**
  * Set up a decent box model on the root element
  */
