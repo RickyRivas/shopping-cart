@@ -171,7 +171,7 @@
   transition: var(--mainTransition);
   background: rgba(240, 157, 81, 0.5);
   z-index: 3;
-visibility: hidden;
+ visibility: hidden;
 }
 .cart {
   position: fixed;
@@ -180,7 +180,7 @@ visibility: hidden;
   width: 100%;
   height: 100%;
   overflow: scroll;
-  z-index: 3;
+  z-index: 30000;
   background: rgb(231, 226, 221);
   padding: 1.5rem;
   transition: var(--mainTransition);

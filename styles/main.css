@@ -288,7 +288,7 @@ html {
   width: 100%;
   height: 100%;
   overflow: scroll;
-  z-index: 3;
+  z-index: 30000;
   background: #e7e2dd;
   padding: 1.5rem;
   -webkit-transition: var(--mainTransition);
