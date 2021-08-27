@@ -1,3 +1,9 @@
+const client = contentful.createClient({
+    space: "x9ptcuh2pi5d",
+    accessToken: "j76u2IZdinqvu0wjsB4visGlj2ujkLUZdWJDfHzrG5g"
+
+});
+console.log(client);
 // Declare variables
 const cartBtn = document.querySelector('.cart-btn');
 const closeCartBtn = document.querySelector('.close-cart');
@@ -17,10 +23,15 @@ let buttonsDOM = [];
 class Products {
     async getProducts() {
         try {
+            let contentful = await client.getEntries({
+                content_type: 'comfyHouseProducts'
+            });
+    
+
             let result = await fetch('/scripts/products.json')
             let data = await result.json();
 
-            let products = data.items;
+            let products = contentful.items;
             products = products.map(item => {
                 const {
                     title,
@@ -121,7 +132,7 @@ class UI {
                                 <img src='images/arrow-down.svg' data-id=${item.id} class='down-quantity-icon icon' alt=''>
                             </div>
         `
-        cartContent.appendChild(div); 
+        cartContent.appendChild(div);
     }
     showCart() {
         cartOverlay.classList.add('transparentBcg');
@@ -163,7 +174,7 @@ class UI {
                 this.setCartValues(cart);
                 addAmount.nextElementSibling.innerText = tempItem.amount;
 
-          } else if (event.target.classList.contains('down-quantity-icon')) {
+            } else if (event.target.classList.contains('down-quantity-icon')) {
                 let lowerAmount = event.target;
                 let id = lowerAmount.dataset.id;
                 let tempItem = cart.find(item => item.id === id);
@@ -177,7 +188,7 @@ class UI {
                     cartContent.removeChild(lowerAmount.parentElement.parentElement);
                     this.removeItem(id);
                 }
-          }
+            }
         })
     }
     // function for clearing cart
