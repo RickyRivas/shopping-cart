@@ -1,3 +1,8 @@
+const client = contentful.createClient({
+    space: "x9ptcuh2pi5d",
+    accessToken: "j76u2IZdinqvu0wjsB4visGlj2ujkLUZdWJDfHzrG5g"
+
+});
 /*
  * This function creates a Stripe Checkout session and returns the session ID
  * for use with Stripe.js (specifically the redirectToCheckout method).
@@ -17,7 +22,9 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
  * The important thing is that the product info is loaded from somewhere trusted
  * so you know the pricing information is accurate.
  */
-const inventory = contentful;
+const inventory = require('../public/scripts/app');
+// Getting the products
+
 
 exports.handler = async (event) => {
   const { sku, quantity } = JSON.parse(event.body);
