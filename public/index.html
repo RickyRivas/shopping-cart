@@ -52,21 +52,23 @@
                 <!-- Cart Item -->
                 <div class='cart-item'>
                 </div>
-                <!-- Cart Item -->      
+                <!-- Cart Item -->
             </div>
             <div class='cart-footer'>
-                    <h3>Your total: $<span class='cart-total'>0</span></h3>
-                    <div class='cart-buttons'>
+                <h3>Your total: $<span class='cart-total'>0</span></h3>
+                <div class='cart-buttons'>
                     <button class='clear-cart banner-btn'>Clear Cart</button>
-                    <button class='purchase-btn banner-btn'>Purchase</button>
-                    </div>
+                    <form action="/functions/create-checkout.js" method="post">
+                        <button class='banner-btn purchase-btn' type="submit">Checkout</button>
+                    </form>
                 </div>
+            </div>
         </div>
     </div>
     <!-- Cart End -->
     <!-- Contentful -->
     <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
-      <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <!-- Scripts -->
     <script src='scripts/app.js'></script>
 </body>

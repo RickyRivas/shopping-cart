@@ -17,7 +17,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
  * The important thing is that the product info is loaded from somewhere trusted
  * so you know the pricing information is accurate.
  */
-const inventory = require('./data/products.json');
+const inventory = contentful;
 
 exports.handler = async (event) => {
   const { sku, quantity } = JSON.parse(event.body);

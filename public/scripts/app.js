@@ -26,7 +26,7 @@ class Products {
             let contentful = await client.getEntries({
                 content_type: 'comfyHouseProducts'
             });
-    
+
 
             let result = await fetch('/scripts/products.json')
             let data = await result.json();
@@ -103,7 +103,6 @@ class UI {
                 // show the cart
                 this.showCart();
             });
-
         });
     }
     setCartValues(cart) {
@@ -134,10 +133,7 @@ class UI {
         `
         cartContent.appendChild(div);
     }
-    // Purchase Logic 
-    handlePurchase() {
-        console.log('Purchase is being handled')
-    }
+       
     showCart() {
         cartOverlay.classList.add('transparentBcg');
         cartDOM.classList.add('showCart')
@@ -160,10 +156,6 @@ class UI {
         // Clear cart button 
         clearCartBtn.addEventListener('click', () => {
             this.clearCart();
-        })
-        // Purchase Logic
-        purchaseBtn.addEventListener('click', () => {
-            this.handlePurchase();
         })
         // cart functionality
         cartContent.addEventListener('click', event => {
@@ -238,7 +230,7 @@ class Storage {
     }
 }
 
-
+// Document onload
 document.addEventListener('DOMContentLoaded', () => {
     const ui = new UI()
     const products = new Products()

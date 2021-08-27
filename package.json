@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/RickyRivas/shopping-cart/issues"
   },
-  "homepage": "https://github.com/RickyRivas/shopping-cart#readme"
+  "homepage": "https://github.com/RickyRivas/shopping-cart#readme",
+  "dependencies": {
+    "stripe": "^8.171.0"
+  }
 }
