@@ -162,7 +162,7 @@ html {
 }
 
 .banner-btn {
-  padding: 1rem 3rem;
+  padding: 10px 20px;
   text-transform: uppercase;
   letter-spacing: var(--mainSpacing);
   font-size: 1rem;
@@ -379,6 +379,10 @@ html {
 .cart-footer h3 {
   text-transform: capitalize;
   margin-bottom: 1rem;
+}
+
+.cart-buttons {
+  display: inline-block;
 }
 
 /* --------------- End of Cart ---------------- */

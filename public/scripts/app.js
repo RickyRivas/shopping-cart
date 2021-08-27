@@ -3,7 +3,6 @@ const client = contentful.createClient({
     accessToken: "j76u2IZdinqvu0wjsB4visGlj2ujkLUZdWJDfHzrG5g"
 
 });
-console.log(client);
 // Declare variables
 const cartBtn = document.querySelector('.cart-btn');
 const closeCartBtn = document.querySelector('.close-cart');
@@ -14,6 +13,7 @@ const cartItems = document.querySelector('.cart-items');
 const cartTotal = document.querySelector('.cart-total');
 const cartContent = document.querySelector('.cart-content');
 const productsDOM = document.querySelector('.products-center');
+const purchaseBtn = document.querySelector('.purchase-btn')
 // Cart 
 let cart = [];
 // buttons 
@@ -134,6 +134,10 @@ class UI {
         `
         cartContent.appendChild(div);
     }
+    // Purchase Logic 
+    handlePurchase() {
+        console.log('Purchase is being handled')
+    }
     showCart() {
         cartOverlay.classList.add('transparentBcg');
         cartDOM.classList.add('showCart')
@@ -156,6 +160,10 @@ class UI {
         // Clear cart button 
         clearCartBtn.addEventListener('click', () => {
             this.clearCart();
+        })
+        // Purchase Logic
+        purchaseBtn.addEventListener('click', () => {
+            this.handlePurchase();
         })
         // cart functionality
         cartContent.addEventListener('click', event => {
@@ -195,7 +203,6 @@ class UI {
     clearCart() {
         let cartItems = cart.map(item => item.id);
         cartItems.forEach(id => this.removeItem(id));
-        console.log(cartContent.children)
         while (cartContent.children.length > 0) {
             cartContent.removeChild(cartContent.children[0])
         }
