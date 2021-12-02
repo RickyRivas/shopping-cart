@@ -223,7 +223,8 @@ class UI {
                 body: JSON.stringify(thisCart)
             }).then((res) => res.json());
 
-            const stripe = Stripe(response.publishableKey);
+            // const stripe = Stripe(response.publishableKey);
+            const stripe = Stripe('pk_test_51K26CdEDwXdr12pLpZ6ZeuMg8kRBaDFgyPJVFDrtjXNrY1J2chPA2Y1e6yBrBp8iym0iHmXgX3qgFuuVevJtM7NL00rwlLv6Ie');
             const {
                 error
             } = await stripe.redirectToCheckout({
