@@ -218,7 +218,7 @@ class UI {
             //    const finalCartItems = cart;
             const response = await fetch('/.netlify/functions/create-checkout', {
                 method: 'POST',
-                header: {
+                headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(thisCart)
