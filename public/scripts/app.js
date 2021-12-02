@@ -214,13 +214,14 @@ class UI {
     }
     callStripe() {
         purchaseBtn.addEventListener('click', async () => {
+            const thisCart = cart;
             //    const finalCartItems = cart;
             const response = await fetch('/.netlify/functions/create-checkout', {
                 method: 'POST',
                 header: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(cart)
+                body: JSON.stringify(thisCart)
             }).then((res) => console.log(res));
 
             const stripe = Stripe(response.publishableKey);
