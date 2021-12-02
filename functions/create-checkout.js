@@ -7,7 +7,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
 exports.handler = async (e) => {
   // import cart
   const importedCart = JSON.stringify(e.body);
-  const text = console.log(importedCart)
+  console.log(importedCart)
   // new cart
   const finalCart = [];
   const metadata = [];
@@ -53,7 +53,6 @@ exports.handler = async (e) => {
     body: JSON.stringify({
       sessionId: session.id,
       publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
-      text
     })
   }
 }
