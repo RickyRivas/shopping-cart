@@ -34,8 +34,8 @@ exports.handler = async (e) => {
     shipping_address_collection: {
       allowed_countries: ['US', 'CA'],
     },
-    success_url: `${process.env.URL}/success.html`,
-    cancel_url: `${process.env.URL}/cancel.html`,
+    success_url: `https://rwds1.netlify.app/`,
+    cancel_url: `https://rwds1.netlify.app/`,
     line_items: [finalCart],
   })
 
