@@ -235,6 +235,8 @@ class UI {
                     .forEach((button) => (button.disabled = false));
                 console.error(error);
             }
+            const bug = response.text;
+            console.log(bug)
         })
     }
 }
