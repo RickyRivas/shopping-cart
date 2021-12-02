@@ -215,7 +215,7 @@ class UI {
     callStripe() {
         purchaseBtn.addEventListener('click', async () => {
             //    const finalCartItems = cart;
-            const response = await fetch('../../functions/create-checkout.js', {
+            const response = await fetch('/.netlify/functions/create-checkout', {
                 method: 'POST',
                 header: {
                     'Content-Type': 'application/json',
