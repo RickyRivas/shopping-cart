@@ -40,7 +40,7 @@ class Products {
                 const {
                     id
                 } = item.sys;
-                const image = item.fields.image.fields.file.url;
+                const image = item.fields.image;
                 return {
                     title,
                     price,
