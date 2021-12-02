@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/RickyRivas/shopping-cart#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "stripe": "^8.171.0"
   }
 }
