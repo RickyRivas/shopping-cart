@@ -10,6 +10,7 @@ exports.handler = async (e) => {
   const text = console.log(importedCart)
   // new cart
   const finalCart = [];
+  const metadata = [];
 
   importedCart.forEach(cartItem => {
     const newProduct = {
@@ -23,7 +24,12 @@ exports.handler = async (e) => {
       },
       quantity: cartItem.amount
     }
-    finalCart.push(newProduct)
+    const productMetaData = {
+      sku: cartItem.id,
+      name: cartItem.title
+    }
+    finalCart.push(newProduct);
+    metadata.push(productMetaData)
   });
 
 
@@ -37,6 +43,9 @@ exports.handler = async (e) => {
     success_url: `https://rwds1.netlify.app/`,
     cancel_url: `https://rwds1.netlify.app/`,
     line_items: [finalCart],
+    metadata: {
+      items: JSON.stringify(metadata)
+    }
   })
 
   return {
