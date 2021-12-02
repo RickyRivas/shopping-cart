@@ -1,8 +1,8 @@
-const client = contentful.createClient({
-    space: "x9ptcuh2pi5d",
-    accessToken: "j76u2IZdinqvu0wjsB4visGlj2ujkLUZdWJDfHzrG5g"
+// const client = contentful.createClient({
+//     space: "x9ptcuh2pi5d",
+//     accessToken: "j76u2IZdinqvu0wjsB4visGlj2ujkLUZdWJDfHzrG5g"
 
-});
+// });
 // Declare variables
 const cartBtn = document.querySelector('.cart-btn');
 const closeCartBtn = document.querySelector('.close-cart');
@@ -23,15 +23,15 @@ let buttonsDOM = [];
 class Products {
     async getProducts() {
         try {
-            let contentful = await client.getEntries({
-                content_type: 'comfyHouseProducts'
-            });
+            // let contentful = await client.getEntries({
+            //     content_type: 'comfyHouseProducts'
+            // });
 
 
-            let result = await fetch('/scripts/products.json')
+            let result = await fetch('scripts/products.json');
             let data = await result.json();
 
-            let products = contentful.items;
+            let products = data.items;
             products = products.map(item => {
                 const {
                     title,
@@ -133,17 +133,18 @@ class UI {
         `
         cartContent.appendChild(div);
     }
-       
+
     showCart() {
         cartOverlay.classList.add('transparentBcg');
         cartDOM.classList.add('showCart')
     }
-    setupAPP() {
+    setupApp() {
         cart = Storage.getCart();
         this.setCartValues(cart);
         this.populateCart(cart);
         cartBtn.addEventListener('click', this.showCart);
         closeCartBtn.addEventListener('click', this.hideCart);
+        purchaseBtn.addEventListener('click', this.callStripe);
     }
     populateCart(cart) {
         cart.forEach(item => this.addCartItem(item));
@@ -211,19 +212,44 @@ class UI {
     getSingleButton(id) {
         return buttonsDOM.find(button => button.dataset.id === id)
     }
+    callStripe() {
+        purchaseBtn.addEventListener('click', async () => {
+            //    const finalCartItems = cart;
+            const response = await fetch('../../functions/create-checkout.js', {
+                method: 'POST',
+                header: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(cart)
+            }).then((res) => console.log(res));
+
+            const stripe = Stripe(response.publishableKey);
+            const {
+                error
+            } = await stripe.redirectToCheckout({
+                sessionId: response.sessionId,
+            });
+            if (error) {
+                document
+                    .querySelectorAll('button')
+                    .forEach((button) => (button.disabled = false));
+                console.error(error);
+            }
+        })
+    }
 }
 
 // Local Storage
 class Storage {
     static saveProducts(products) {
-        localStorage.setItem("products", JSON.stringify(products))
+        localStorage.setItem("products", JSON.stringify(products));
     }
     static getProduct(id) {
         let products = JSON.parse(localStorage.getItem('products'));
         return products.find(product => product.id === id)
     }
     static saveCart(cart) {
-        localStorage.setItem('cart', JSON.stringify(cart))
+        localStorage.setItem('cart', JSON.stringify(cart));
     }
     static getCart() {
         return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
@@ -235,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ui = new UI()
     const products = new Products()
     // setup application
-    ui.setupAPP();
+    ui.setupApp();
     //Get all products
     products.getProducts().then(products => {
         ui.displayProducts(products);

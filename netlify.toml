@@ -2,3 +2,7 @@
 command = "cd functions && npm i && cd .."
 publish = "public"
 functions = "functions"
+
+
+STRIPE_PUBLISHABLE_KEY='pk_test_51K26CdEDwXdr12pLpZ6ZeuMg8kRBaDFgyPJVFDrtjXNrY1J2chPA2Y1e6yBrBp8iym0iHmXgX3qgFuuVevJtM7NL00rwlLv6Ie'
+STRIPE_SECRET_KEY='sk_test_51K26CdEDwXdr12pLmXDaaOnPW7skGzsxyTUdc4vuScBvrzJKZRtswQVRDuXpiIcnPhqez78dGRfXUZBg92R0e5Hv004niYNHrB'
