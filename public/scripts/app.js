@@ -192,7 +192,6 @@ class UI {
             }
         })
     }
-    // function for clearing cart
     clearCart() {
         let cartItems = cart.map(item => item.id);
         cartItems.forEach(id => this.removeItem(id));
@@ -222,7 +221,7 @@ class UI {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(thisCart)
-            }).then((res) => console.log(res));
+            }).then((res) => res.json());
 
             const stripe = Stripe(response.publishableKey);
             const {
