@@ -214,6 +214,9 @@ class UI {
     callStripe() {
         purchaseBtn.addEventListener('click', async () => {
             const thisCart = cart;
+            thisCart.forEach(item => {
+                item.price = item.price * 100;
+            })
             console.log(cart)
             //    const finalCartItems = cart;
             const response = await fetch('/.netlify/functions/create-checkout', {
