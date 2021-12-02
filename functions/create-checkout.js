@@ -41,7 +41,7 @@ exports.handler = async (e) => {
     },
     success_url: `https://rwds1.netlify.app/`,
     cancel_url: `https://rwds1.netlify.app/`,
-    line_items: [finalCart],
+    line_items: finalCart,
     metadata: {
       items: JSON.stringify(metadata)
     }
