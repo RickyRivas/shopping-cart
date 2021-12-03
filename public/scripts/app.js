@@ -1,7 +1,6 @@
-
 const client = contentful.createClient({
-  space: 'jt4gea9e7d3j',
-  accessToken: 'MbIRbPfv5jqe4OXc8WRbTUzYDNhNzMHss9oYLGx-Rt0'
+    space: 'jt4gea9e7d3j',
+    accessToken: 'MbIRbPfv5jqe4OXc8WRbTUzYDNhNzMHss9oYLGx-Rt0'
 })
 
 // });
@@ -39,7 +38,8 @@ class Products {
                 const {
                     id
                 } = item.sys;
-                const image = item.fields.image[0].fields.file.url;
+                const image = 'https:' + item.fields.image[0].fields.file.url;
+
                 return {
                     title,
                     price,
@@ -228,7 +228,7 @@ class UI {
             console.log(response)
 
             const stripe = Stripe(response.publishableKey);
-           const {
+            const {
                 error
             } = await stripe.redirectToCheckout({
                 sessionId: response.sessionId,
