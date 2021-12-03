@@ -11,28 +11,50 @@
 
 <body>
     <!-- Nav Start -->
-    <nav class='navbar'>
-        <div class="navbar-center">
-            <span class="nav-icon">
-                <img src='images/menu.svg' class='toggle' alt='hamburger toggle'>
-            </span>
-            <img src='images/logo.svg' class='logo' alt='Logo'>
-            <div class='cart-btn'>
-                <span class='cart-icon'>
-                    <img src="images/shopping-cart.svg" alt="">
-                </span>
-                <div class='cart-items'>0</div>
+    <!-- Navigation Start -->
+    <header>
+        <nav>
+            <div class='logo-box'>
+                <img src='images/RLOGO1-01.svg' class='logo' alt='esb logo'>
             </div>
-        </div>
-    </nav>
+            <div class='navlinks-overlay'></div>
+            <div class="wrap">
+                <ul class="nav-links">
+                    <li class="nav-link"><a href="index.html">Home</a></li>
+                    <li class="nav-link"><a href="services.html">Services</a></li>
+                    <li class="nav-link"><a href="gallery.html">Gallery</a></li>
+                    <li class="nav-link"><a href="products.html">Products</a></li>
+                    <li class="nav-link"><a href="about.html">About</a></li>
+                    <li class='social-media'>
+                        <a href='https://www.instagram.com/esb_barbershop/'><img src='images/instagramwhite.svg'
+                                alt="instagram link" class=""></a>
+                        <a href='https://www.facebook.com/eastsideblends'><img src='images/facebook-logo.svg'
+                                alt="facebook link" class=""></a>
+                    </li>
+                </ul>
+                <div class='cart-btn'>
+                    <span class='cart-icon'>
+                        <img src="images/shopping-cart.svg" alt="">
+                    </span>
+                    <div class='cart-items'>0</div>
+                </div>
+                <button class="hamburger" type="button" aria-label="Navigation Toggle" aria-controls="navigation">
+                    <span class="hamburger-inner">
+                    </span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <!-- Navigation End -->
     <!-- Nav End  -->
     <!-- Hero Start -->
-    <header class='hero'>
-        <div class='banner'>
-            <h1 class='banner-title'>Furniture Collection</h1>
-            <button class='banner-btn'>Shop Now</button>
+    <section id='hero'>
+        <div class='container'>
+            <h1 class='banner-title'>RWD Demo Store</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus accusantium in quis debitis excepturi</p>
+            <button class='btn btn-primary'>View Collections</button>
         </div>
-    </header>
+    </section>
     <!-- Hero End -->
     <!-- Products Start -->
     <section class='products'>
@@ -46,7 +68,7 @@
     <!-- Cart Start -->
     <div class='cart-overlay'>
         <div class='cart'>
-            <span class='close-cart'>X</span>
+            <span class='close-cart'><span class="line"></span></span>
             <h2>Your cart</h2>
             <div class='cart-content'>
                 <!-- Cart Item -->
@@ -57,8 +79,8 @@
             <div class='cart-footer'>
                 <h3>Your total: $<span class='cart-total'>0</span></h3>
                 <div class='cart-buttons'>
-                    <button class='clear-cart banner-btn'>Clear Cart</button>
-                    <button class='banner-btn purchase-btn'>Checkout</button>
+                    <button class='clear-cart btn btn-light'>Clear Cart</button>
+                    <button class='banner-btn purchase-btn btn btn-primary'>Checkout</button>
                 </div>
             </div>
         </div>
@@ -67,6 +89,7 @@
     <!-- Contentful -->
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+    <script src="scripts/main.js"></script>
     <!-- Scripts -->
     <script src='scripts/app.js'></script>
 </body>

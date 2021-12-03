@@ -1,0 +1,124 @@
+//Default whites/greys
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+$grays: ("100": $gray-100,
+    "200": $gray-200,
+    "300": $gray-300,
+    "400": $gray-400,
+    "500": $gray-500,
+    "600": $gray-600,
+    "700": $gray-700,
+    "800": $gray-800,
+    "900": $gray-900);
+
+// Color pallet
+$blue: #0d6efd;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #d63384;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #198754;
+$teal: #20c997;
+$cyan: #0dcaf0;
+$tomato: #ed5034;
+$chocolate: #d94c32;
+$white-smoke: #f7f7f7;
+
+
+$colors: ("blue": $blue,
+    "indigo": $indigo,
+    "purple": $purple,
+    "pink": $pink,
+    "red": $red,
+    "orange": $orange,
+    "yellow": $yellow,
+    "green": $green,
+    "teal": $teal,
+    "cyan": $cyan,
+    "white": $white,
+    "gray": $gray-600,
+    "gray-dark": $gray-800);
+// theme-color-variables
+$primary: #003566;
+$secondary: $gray-600;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $gray-100;
+$dark: $gray-900;
+// Project Colors 
+$theme-colors: ("primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light,
+    "dark": $dark);
+// border-radius-variables
+$border-radius: .25rem;
+$border-radius-sm: .2rem;
+$border-radius-lg: .3rem;
+$border-radius-pill: 50rem;
+
+// box-shadow-variables
+// $box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+$box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+// $box-shadow-sm: 0 .125rem .25rem rgba($black, .075);
+// $box-shadow-lg: 0 1rem 3rem rgba($black, .175);
+// $box-shadow-inset: inset 0 1px 2px rgba($black, .075);
+// $font-size-base effects the font size of the body text
+$font-size-root: null;
+$font-size-base: 1rem; // Assumes the browser default, typically `16px`
+$font-size-sm: $font-size-base * .875;
+$font-size-lg: $font-size-base * 1.25;
+
+$font-weight-lighter: lighter;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$font-weight-bolder: bolder;
+
+$font-weight-base: $font-weight-normal;
+
+$line-height-base: 1.5;
+$line-height-sm: 1.25;
+$line-height-lg: 2;
+
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.25;
+$h6-font-size: $font-size-base;
+// Spacing
+$padding-sm: .5rem;
+$padding-md: 1rem;
+$padding-lg: 2rem;
+$padding-xl: 4rem;
+$margin-sm: .5rem;
+$margin-md: 1rem;
+$margin-lg: 2rem;
+$margin-xl: 4rem;
+// Text color
+$text-color: #a9a9a9;
+// div
+$dark-div-bg: #1e2225;
+// font
+$font-one: 'Boska', serif;
+// h2 psuedo background
+$psuedo-bg: linear-gradient(to right,#ed5034 0%,#ed5034 74%,rgba(255,255,255,0) 74%,rgba(255,255,255,0) 87%,#ed5034 87%);
+// White transparent bg 
+$white-transparent-bg: rgba(255,255,255,.85);
