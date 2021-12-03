@@ -15,7 +15,7 @@
         "id": "2"
       },
       "fields": {
-        "title": "1922 Morgan Dollar",
+        "title": "1922 Morgan",
         "price": 12.99,
         "image": "https://newlifeministries.s3.us-east-2.amazonaws.com/coin04.jpeg"
       }
@@ -25,7 +25,7 @@
         "id": "3"
       },
       "fields": {
-        "title": "Queen Elizabeth 2 Pounds",
+        "title": "Silver 2 oz",
         "price": 12.99,
         "image": "https://newlifeministries.s3.us-east-2.amazonaws.com/img05.jpg"
       }
