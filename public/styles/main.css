@@ -550,7 +550,7 @@ html {
 @media (min-width: 0em) {
   #hero {
     width: 100vw;
-    height: 450px;
+    height: 500px;
   }
   #hero .container {
     width: 100%;
@@ -569,8 +569,8 @@ html {
         -ms-flex-direction: column;
             flex-direction: column;
     padding: 0.5rem;
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url(/public/images/paidimg01.jpg) center/cover;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/public/images/paidimg01.jpg) center/cover;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(/images/paidimg01.jpg) center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/paidimg01.jpg) center/cover;
   }
   #hero .container h1 {
     color: white;
@@ -581,6 +581,12 @@ html {
     text-align: center;
     margin-bottom: 1rem;
   }
+  #hero .container .cta {
+    padding: 10px 30px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+  }
 }
 
 /* --------------- End of Hero ---------------- */
@@ -590,11 +596,12 @@ html {
   width: 100%;
 }
 
-#products .section-title h2 {
+#products .heading {
   text-align: center;
-  font-size: 2.5rem;
-  text-transform: capitalize;
-  letter-spacing: var(--mainSpacing);
+}
+
+#products .heading h2 {
+  margin-bottom: 1rem;
 }
 
 #products .products-center {
@@ -647,6 +654,7 @@ html {
   -webkit-transform: translateX(101%);
           transform: translateX(101%);
   cursor: pointer;
+  color: black;
 }
 
 #products .products-center .product .bag-btn:hover {
