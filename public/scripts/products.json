@@ -5,9 +5,9 @@
         "id": "1"
       },
       "fields": {
-        "title": "queen panel bed",
+        "title": "2021 Silver Eagle",
         "price": 10.99,
-        "image": "./images/product-1.jpeg"
+        "image": "https://newlifeministries.s3.us-east-2.amazonaws.com/coin.png"
       }
     },
     {
@@ -15,9 +15,9 @@
         "id": "2"
       },
       "fields": {
-        "title": "king panel bed",
+        "title": "1922 Morgan Dollar",
         "price": 12.99,
-        "image": "./images/product-2.jpeg"
+        "image": "https://newlifeministries.s3.us-east-2.amazonaws.com/coin04.jpeg"
       }
     },
     {
@@ -25,9 +25,9 @@
         "id": "3"
       },
       "fields": {
-        "title": "single panel bed",
+        "title": "Queen Elizabeth 2 Pounds",
         "price": 12.99,
-        "image": "./images/product-3.jpeg"
+        "image": "https://newlifeministries.s3.us-east-2.amazonaws.com/img05.jpg"
       }
     }
   ]

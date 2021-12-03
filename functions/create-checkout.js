@@ -25,7 +25,8 @@ exports.handler = async (e) => {
     }
     const productMetaData = {
       sku: cartItem.id,
-      name: cartItem.title
+      name: cartItem.title,
+      images: [cartItem.image]
     }
     finalCart.push(newProduct);
     metadata.push(productMetaData)
