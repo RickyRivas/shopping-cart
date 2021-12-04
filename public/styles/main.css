@@ -508,7 +508,7 @@ html {
 }
 
 .btn-primary {
-  background-color: #003566;
+  background-color: #d00000;
 }
 
 .btn-success {
@@ -652,7 +652,7 @@ html {
             align-items: center;
   }
   #products .products-center .product .btns .bag-btn {
-    background: #003566;
+    background: #d00000;
     border: none;
     text-transform: uppercase;
     padding: 10px 30px;
@@ -850,6 +850,8 @@ html {
     margin-top: 2rem;
     letter-spacing: var(--mainSpacing);
     text-align: center;
+    -ms-grid-column-align: end;
+        justify-self: end;
   }
   .cart-footer h3 {
     text-transform: capitalize;
@@ -857,6 +859,29 @@ html {
   }
   .cart-buttons {
     display: inline-block;
+    width: 100%;
+  }
+  .cart-buttons .purchase-btn {
+    padding: 15px;
+    width: 100%;
+    border: 0;
+    text-transform: uppercase;
+    background-color: #d00000;
+    color: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    letter-spacing: 2px;
+  }
+  .cart-buttons .purchase-btn img {
+    width: 1rem;
+    margin-left: 0.5rem;
   }
 }
 

@@ -7,7 +7,7 @@ const client = contentful.createClient({
 // Declare variables
 const cartBtn = document.querySelector('.cart-btn');
 const closeCartBtn = document.querySelector('.close-cart');
-const clearCartBtn = document.querySelector('.clear-cart');
+// const clearCartBtn = document.querySelector('.clear-cart');
 const cartDOM = document.querySelector('.cart');
 const cartOverlay = document.querySelector('.cart-overlay');
 const cartItems = document.querySelector('.cart-items');
@@ -15,7 +15,6 @@ const cartTotal = document.querySelector('.cart-total');
 const cartContent = document.querySelector('.cart-content');
 const productsDOM = document.querySelector('.products-center');
 const purchaseBtn = document.querySelector('.purchase-btn');
-
 
 // Cart 
 let cart = [];
@@ -161,9 +160,9 @@ class UI {
     }
     cartLogic() {
         // Clear cart button 
-        clearCartBtn.addEventListener('click', () => {
-            this.clearCart();
-        })
+        // clearCartBtn.addEventListener('click', () => {
+        //     this.clearCart();
+        // })
         // cart functionality
         cartContent.addEventListener('click', event => {
             if (event.target.classList.contains('remove-item')) {
@@ -205,6 +204,7 @@ class UI {
             cartContent.removeChild(cartContent.children[0])
         }
         this.hideCart();
+        this.checkCartLength();
     }
     removeItem(id) {
         cart = cart.filter(item => item.id !== id)

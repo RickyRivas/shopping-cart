@@ -185,6 +185,7 @@
     transition: all .3s ease-in;
     transform: translateX(101%);
     padding: $padding-md;
+    
   }
 
   .showCart {
@@ -278,6 +279,7 @@
     margin-top: 2rem;
     letter-spacing: var(--mainSpacing);
     text-align: center;
+    justify-self: end;
   }
 
   .cart-footer h3 {
@@ -287,6 +289,24 @@
 
   .cart-buttons {
     display: inline-block;
+    width: 100%;
+    
+    .purchase-btn {
+      padding: 15px;
+      width: 100%;
+      border: 0;
+      text-transform: uppercase;
+      background-color: #d00000;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      letter-spacing: 2px;
+      img {
+        width: 1rem;
+        margin-left: $margin-sm;
+      }
+    }
   }
 }
 
