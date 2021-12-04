@@ -14,7 +14,9 @@ const cartItems = document.querySelector('.cart-items');
 const cartTotal = document.querySelector('.cart-total');
 const cartContent = document.querySelector('.cart-content');
 const productsDOM = document.querySelector('.products-center');
-const purchaseBtn = document.querySelector('.purchase-btn')
+const purchaseBtn = document.querySelector('.purchase-btn');
+
+
 // Cart 
 let cart = [];
 // buttons 
@@ -33,7 +35,8 @@ class Products {
             products = products.map(item => {
                 const {
                     title,
-                    price
+                    price,
+                    description
                 } = item.fields;
                 const {
                     id
@@ -44,7 +47,8 @@ class Products {
                     title,
                     price,
                     id,
-                    image
+                    image,
+                    description
                 }
             })
             return products
@@ -63,10 +67,13 @@ class UI {
             <article class='product'>
                 <div class='img-container'>
                     <img src='${product.image}'>
-                    <button class='bag-btn' data-id=${product.id}>Add to bag</button>
                 </div>
                 <h3>${product.title}</h3>
                 <h4>${product.price}</h4>
+                <div class='btns'>
+                 <button class='view-btn btn btn-light'>View Item</button>
+                <button class='bag-btn' data-id=${product.id}>Add to bag</button>
+                </div>
             </article>
             <!-- Single Product-->
             `;
@@ -239,6 +246,10 @@ class UI {
             const bug = response.text;
             console.log(bug)
         })
+    }
+    triggerModal() {
+        const prodOverlay = document.querySelectorAll('.prod-modal-overlay');
+        prodOverlay.style.visibility = 'visible';
     }
 }
 
