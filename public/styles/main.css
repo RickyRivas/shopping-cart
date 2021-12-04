@@ -770,6 +770,7 @@ html {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    padding-bottom: 2rem;
   }
   .cart .cart-content {
     width: 100%;
@@ -899,6 +900,9 @@ html {
   .cart-buttons .purchase-btn img {
     width: 1rem;
     margin-left: 0.5rem;
+  }
+  .cart-buttons .purchase-btn:disabled {
+    opacity: 50%;
   }
 }
 

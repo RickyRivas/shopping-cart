@@ -71,7 +71,7 @@ class UI {
                 <h4>${product.price}</h4>
                 <div class='btns'>
                  <button class='view-btn btn btn-light'>View Item</button>
-                <button class='bag-btn' data-id=${product.id}>Add to bag</button>
+                <button class='bag-btn' data-id=${product.id}>Add to Cart</button>
                 </div>
             </article>
             <!-- Single Product-->
@@ -114,16 +114,22 @@ class UI {
         let tempTotal = 0;
         let itemsTotal = 0;
         let emptyText = document.querySelector('.cart-content p');
+        let cartEstText = document.querySelector('.cart-footer h3');
         cart.map(item => {
             tempTotal += item.price * item.amount;
             itemsTotal += item.amount
         })
         cartTotal.innerText = parseFloat(tempTotal.toFixed(2))
         cartItems.innerText = itemsTotal;
+        // 
         if (cart.length > 0) {
-            emptyText.style.display = 'none'
+            emptyText.style.display = 'none';
+            purchaseBtn.disabled = false;
+            cartEstText.style.display = 'block'
         } else {
             emptyText.style.display = 'block';
+            purchaseBtn.disabled = true;
+            cartEstText.style.display = 'none'
         }
     }
     addCartItem(item) {

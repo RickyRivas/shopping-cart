@@ -188,6 +188,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    padding-bottom: 2rem;
     .cart-content {
       width: 100%;
       p {
@@ -313,6 +314,9 @@
       img {
         width: 1rem;
         margin-left: $margin-sm;
+      }
+      &:disabled {
+        opacity: 50%;
       }
     }
   }
