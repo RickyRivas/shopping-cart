@@ -24,7 +24,6 @@ exports.handler = async (e) => {
       quantity: cartItem.amount
     }
     const productMetaData = {
-      sku: cartItem.id,
       name: cartItem.title,
       images: [cartItem.image]
     }
