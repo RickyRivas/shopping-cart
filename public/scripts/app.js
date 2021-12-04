@@ -113,12 +113,18 @@ class UI {
     setCartValues(cart) {
         let tempTotal = 0;
         let itemsTotal = 0;
+        let emptyText = document.querySelector('.cart-content p');
         cart.map(item => {
             tempTotal += item.price * item.amount;
             itemsTotal += item.amount
         })
         cartTotal.innerText = parseFloat(tempTotal.toFixed(2))
         cartItems.innerText = itemsTotal;
+        if (cart.length > 0) {
+            emptyText.style.display = 'none'
+        } else {
+            emptyText.style.display = 'block';
+        }
     }
     addCartItem(item) {
         const div = document.createElement('div');

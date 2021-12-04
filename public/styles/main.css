@@ -234,6 +234,7 @@ html {
   header nav .wrap .cart-btn {
     margin-right: 1rem;
     position: relative;
+    cursor: pointer;
   }
   header nav .wrap .cart-btn .cart-icon img {
     width: 2rem;
@@ -759,6 +760,22 @@ html {
     -webkit-transform: translateX(101%);
             transform: translateX(101%);
     padding: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .cart .cart-content {
+    width: 100%;
+  }
+  .cart .cart-content p {
+    text-align: center;
   }
   .showCart {
     -webkit-transform: translateX(0%);
