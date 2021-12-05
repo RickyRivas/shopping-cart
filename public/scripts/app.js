@@ -1,8 +1,12 @@
-
 const getVars = async () => {
-    await fetch('/.netlify/functions/create-checkout')
-        .then(res => res.json())
-        .then(data => console.log(data))
+    fetch('/.netlify/functions/create-checkout')
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
 }
 getVars();
 const client = contentful.createClient({
@@ -236,30 +240,30 @@ class UI {
     getSingleButton(id) {
         return buttonsDOM.find(button => button.dataset.id === id)
     }
-     callStripe = async() =>  {
-            const thisCart = cart;
-            thisCart.forEach(item => {
-                item.price = item.price * 100;
-            })
-            const response = await fetch('/.netlify/functions/create-checkout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(thisCart)
-            }).then((res) => res.json());
-            console.log(response)
+    callStripe = async () => {
+        const thisCart = cart;
+        thisCart.forEach(item => {
+            item.price = item.price * 100;
+        })
+        const response = await fetch('/.netlify/functions/create-checkout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(thisCart)
+        }).then((res) => res.json());
+        console.log(response)
 
-            const stripe = Stripe(response.publishableKey);
-            const {
-                error
-            } = await stripe.redirectToCheckout({
-                sessionId: response.sessionId,
-            });
-            if (error) {
-                console.error(error);
-            }
-        
+        const stripe = Stripe(response.publishableKey);
+        const {
+            error
+        } = await stripe.redirectToCheckout({
+            sessionId: response.sessionId,
+        });
+        if (error) {
+            console.error(error);
+        }
+
     }
     triggerModal() {
         const prodOverlay = document.querySelectorAll('.prod-modal-overlay');
