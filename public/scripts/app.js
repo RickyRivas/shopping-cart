@@ -1,6 +1,6 @@
 
 const getVars = async () => {
-    fetch('/.netlify/functions/provide-vars')
+   await fetch('/.netlify/functions/provide-vars')
         .then(response => {
           let contentfulSpace = response.space;
             console.log(contentfulSpace);
