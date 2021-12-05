@@ -1,7 +1,11 @@
+let contentfulToken, contentfulSpace;
 const getVars = async () => {
     fetch('/.netlify/functions/provide-vars')
         .then(response => {
-            console.log(response)
+            contentfulSpace = response.space;
+            console.log(contentfulSpace);
+            contentfulToken = response.token;
+            console.log(contentfulToken)
         })
         .catch(err => {
             console.log(err)
@@ -41,7 +45,6 @@ class Products {
             });
 
             let products = contentful.items;
-            console.log(products)
             products = products.map(item => {
                 const {
                     title,
