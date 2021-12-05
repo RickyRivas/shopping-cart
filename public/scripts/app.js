@@ -162,7 +162,8 @@ class UI {
         this.populateCart(cart);
         cartBtn.addEventListener('click', this.showCart);
         closeCartBtn.addEventListener('click', this.hideCart);
-        purchaseBtn.addEventListener('click', this.callStripe);
+        // purchaseBtn.addEventListener('click', this.callStripe);
+        purchaseBtn.addEventListener('click', this.callSendgrid);
     }
     viewProduct(products) {
         let prodsRef = [];
@@ -307,30 +308,30 @@ class UI {
     getSingleButton(id) {
         return buttonsDOM.find(button => button.dataset.id === id)
     }
-    callStripe = async () => {
-        const thisCart = cart;
-        thisCart.forEach(item => {
-            item.price = item.price * 100;
-        })
-        const response = await fetch('/.netlify/functions/create-checkout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(thisCart)
-        }).then((res) => res.json());
+    // callStripe = async () => {
+    //     const thisCart = cart;
+    //     thisCart.forEach(item => {
+    //         item.price = item.price * 100;
+    //     })
+    //     const response = await fetch('/.netlify/functions/create-checkout', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(thisCart)
+    //     }).then((res) => res.json());
 
-        const stripe = Stripe(response.publishableKey);
-        const {
-            error
-        } = await stripe.redirectToCheckout({
-            sessionId: response.sessionId,
-        });
-        if (error) {
-            console.error(error);
-        }
-        this.callSendgrid();
-    }
+    //     const stripe = Stripe(response.publishableKey);
+    //     const {
+    //         error
+    //     } = await stripe.redirectToCheckout({
+    //         sessionId: response.sessionId,
+    //     });
+    //     if (error) {
+    //         console.error(error);
+    //     }
+    //     this.callSendgrid();
+    // }
     callSendgrid = async () => {
         const response = await fetch('/.netlify/functions/sendgrid-test').then((res) => res.json());
         console.log(response)
