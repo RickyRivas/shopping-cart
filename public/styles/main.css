@@ -610,11 +610,12 @@ html {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+    margin: auto;
   }
   #products .products-center .product {
     width: -webkit-max-content;
@@ -736,21 +737,14 @@ html {
     background: rgba(0, 0, 0, 0.7);
     z-index: 22;
     visibility: hidden;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
     -webkit-transition: all .3s ease-in;
     transition: all .3s ease-in;
   }
   .cart {
+    position: absolute;
     width: 100%;
     max-width: 500px;
+    right: 0;
     height: 100%;
     overflow: scroll;
     z-index: 33;

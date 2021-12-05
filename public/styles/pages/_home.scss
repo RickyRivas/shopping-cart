@@ -55,8 +55,9 @@
       max-width: 1200px;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       flex-wrap: wrap;
+      margin: auto;
 
       .product {
         width: max-content;
@@ -169,15 +170,14 @@
     background: rgba(0, 0, 0, .7);
     z-index: 22;
     visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     transition: all .3s ease-in;
   }
 
   .cart {
+    position: absolute;
     width: 100%;
     max-width: 500px;
+    right: 0;
     height: 100%;
     overflow: scroll;
     z-index: 33;
