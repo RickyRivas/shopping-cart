@@ -94,7 +94,11 @@
             box-shadow: $box-shadow;
 
             &:hover {
-              color: var(--mainWhite);
+              opacity: .7;
+            }
+            &:disabled {
+              opacity: .7;
+              cursor: not-allowed;
             }
           }
         }
@@ -194,7 +198,14 @@
       p {
         text-align: center;
       }
+       .empty-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
+    }
+
   }
 
   .showCart {
@@ -318,8 +329,11 @@
         margin-left: $margin-sm;
       }
       &:disabled {
-        opacity: 50%;
+        opacity: .70;
         cursor: not-allowed;
+      }
+      &:hover {
+        opacity: .70;
       }
     }
   }

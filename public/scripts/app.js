@@ -1,11 +1,13 @@
-let contentSpace, contentToken;
-const getVars = async () => {
-     const response = await fetch('/.netlify/functions/provide-vars').then((res) => res.json());
-    contentSpace = response.token;
-    contentToken = response.space;
-}
-console.log(contentSpace)
-getVars();
+let mySpaceId, myAccessToken
+const config = (x) => {
+    // const response = await fetch('/.netlify/functions/provide-vars').then((res) => res.json());
+    x = 'hey';
+    // y = response.token;
+ }
+
+config(mySpaceId);
+console.log(config.x)
+
 const client = contentful.createClient({
     space: 'jt4gea9e7d3j',
     accessToken: 'MbIRbPfv5jqe4OXc8WRbTUzYDNhNzMHss9oYLGx-Rt0'
@@ -78,7 +80,7 @@ class UI {
                 <h4>${product.price}</h4>
                 <div class='btns'>
                  <button class='view-btn btn btn-light'>View Item</button>
-                <button class='bag-btn' data-id=${product.id}>Add to Cart</button>
+                <button class='bag-btn' data-id=${product.id}>Quick Add</button>
                 </div>
             </article>
             <!-- Single Product-->
@@ -120,7 +122,7 @@ class UI {
     setCartValues(cart) {
         let tempTotal = 0;
         let itemsTotal = 0;
-        let emptyText = document.querySelector('.cart-content p');
+        let emptyDiv = document.querySelector('.empty-content');
         let cartEstText = document.querySelector('.cart-footer h3');
         cart.map(item => {
             tempTotal += item.price * item.amount;
@@ -130,11 +132,11 @@ class UI {
         cartItems.innerText = itemsTotal;
         // 
         if (cart.length > 0) {
-            emptyText.style.display = 'none';
+            emptyDiv.style.display = 'none';
             purchaseBtn.disabled = false;
             cartEstText.style.display = 'block'
         } else {
-            emptyText.style.display = 'block';
+            emptyDiv.style.display = 'block';
             purchaseBtn.disabled = true;
             cartEstText.style.display = 'none'
         }
@@ -231,7 +233,7 @@ class UI {
         Storage.saveCart(cart);
         let button = this.getSingleButton(id);
         button.disabled = false;
-        button.innerHTML = `add to cart`;
+        button.innerHTML = `Quick Add`;
     }
     getSingleButton(id) {
         return buttonsDOM.find(button => button.dataset.id === id)
