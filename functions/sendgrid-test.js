@@ -3,7 +3,7 @@
 
 exports.handler = async () => {
     const sgMail = require('@sendgrid/mail')
-    sgMail.setApiKey('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')
+    sgMail.setApiKey(`${SENDGRID_API_KEY}`)
     const msg = {
         to: 'rickyrivas918@gmail.com', // Change to your recipient
         from: 'rickyrivas918@gmail.com', // Change to your verified sender
