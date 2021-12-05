@@ -1,5 +1,5 @@
 const getVars = async () => {
-    fetch('/.netlify/functions/create-checkout')
+    fetch('/.netlify/functions/provide-vars')
         .then(response => {
             console.log(response)
         })
