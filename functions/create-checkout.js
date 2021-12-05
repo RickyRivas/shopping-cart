@@ -2,7 +2,8 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2020-03-02',
   maxNetworkRetries: 2,
 });
-
+const accessToken = process.env.ACCESS_TOKEN;
+const spaceId = process.env.SPACE_ID
 
 exports.handler = async (e) => {
   // import cart
@@ -52,6 +53,8 @@ exports.handler = async (e) => {
     body: JSON.stringify({
       sessionId: session.id,
       publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+      spaceId: spaceId,
+      accessToken: accessToken
     })
   }
 }

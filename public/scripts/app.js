@@ -1,3 +1,11 @@
+
+
+const getVars = async () => {
+    const response = await fetch('/.netlify/functions/create-checkout');
+    console.log(response);
+    
+}
+getVars();
 const client = contentful.createClient({
     space: 'jt4gea9e7d3j',
     accessToken: 'MbIRbPfv5jqe4OXc8WRbTUzYDNhNzMHss9oYLGx-Rt0'
