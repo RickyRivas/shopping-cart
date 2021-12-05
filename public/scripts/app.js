@@ -15,8 +15,8 @@ console.log(config[0], config[1])
 const client = contentful.createClient({
     // space: 'jt4gea9e7d3j',
     // accessToken: 'MbIRbPfv5jqe4OXc8WRbTUzYDNhNzMHss9oYLGx-Rt0'
-    space: contentSpace,
-    accessToken: contentToken
+    space: `${contentSpace}`,
+    accessToken: `${contentToken}`
 })
 
 // });
