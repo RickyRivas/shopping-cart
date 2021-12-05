@@ -1,9 +1,10 @@
-
+let contentSpace, contentToken;
 const getVars = async () => {
      const response = await fetch('/.netlify/functions/provide-vars').then((res) => res.json());
-     console.log(response)
+    contentSpace = response.token;
+    contentToken = response.space;
 }
-
+console.log(contentSpace)
 getVars();
 const client = contentful.createClient({
     space: 'jt4gea9e7d3j',
