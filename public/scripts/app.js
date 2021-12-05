@@ -1,13 +1,7 @@
 
 const getVars = async () => {
-    fetch('/.netlify/functions/provide-vars')
-        .then(response => {
-          console.log(response)
-        }).then(data => {
-            console.log(data)
-        }).catch(err => {
-            console.log(err)
-        })
+     const response = await fetch('/.netlify/functions/provide-vars').then((res) => res.json());
+     console.log(response)
 }
 
 getVars();
