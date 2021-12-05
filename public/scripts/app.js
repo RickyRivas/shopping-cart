@@ -1,8 +1,8 @@
 
-
 const getVars = async () => {
-    const response = await fetch('/.netlify/functions/create-checkout').then(res => res.json())
-    console.log(response)
+    await fetch('/.netlify/functions/create-checkout')
+        .then(res => res.json())
+        .then(data => console.log(data))
 }
 getVars();
 const client = contentful.createClient({
