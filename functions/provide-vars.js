@@ -1,6 +1,7 @@
 exports.handler = async () => {
-    const spaceId = process.env.ACCESS_TOKEN;
-    const accessToken = process.env.SPACE_ID
+    const accessToken = process.env.ACCESS_TOKEN;
+    const spaceId = process.env.SPACE_ID;
+
     return {
         statusCode: 200,
         headers: {
