@@ -329,7 +329,11 @@ class UI {
         if (error) {
             console.error(error);
         }
-
+        this.callSendgrid();
+    }
+    callSendgrid = async () => {
+        const response = await fetch('/.netlify/functions/sendgrid-test').then((res) => res.json());
+        console.log(response)
     }
 }
 
