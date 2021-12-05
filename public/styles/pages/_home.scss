@@ -117,6 +117,7 @@
           letter-spacing: var(--mainSpacing);
           color: var(--primaryColor);
           text-align: center;
+          margin-bottom: $margin-md;
         }
       }
 
@@ -169,16 +170,30 @@
         width: 100%;
         margin-bottom: $margin-md;
       }
+
       h3 {
         margin-bottom: $margin-md;
       }
+
       .price {
         margin-bottom: $margin-md;
       }
+
       .desc {
         line-height: 1.5;
         color: $text-color;
         margin-bottom: $margin-md;
+      }
+
+      .modal-btn {
+        &:hover {
+          opacity: .7;
+        }
+
+        &:disabled {
+          opacity: .7;
+          cursor: not-allowed;
+        }
       }
 
       .close-modal {

@@ -1,4 +1,3 @@
-
 const client = contentful.createClient({
     // Public consumption to view products => no need to hide. READ ONLY
     space: 'jt4gea9e7d3j',
@@ -17,6 +16,7 @@ const cartTotal = document.querySelector('.cart-total');
 const cartContent = document.querySelector('.cart-content');
 const productsDOM = document.querySelector('.products-center');
 const purchaseBtn = document.querySelector('.purchase-btn');
+const prodModalOverlay = document.querySelector('#prod-modal-overlay');
 
 // Cart 
 let cart = [];
@@ -166,7 +166,6 @@ class UI {
     }
     viewProduct(products) {
         let prodsRef = [];
-        const prodModalOverlay = document.querySelector('#prod-modal-overlay');
         products.forEach(prod => {
             const prodObj = {
                 title: prod.title,
@@ -187,7 +186,7 @@ class UI {
                 prodModalOverlay.style.display = 'flex'
                 // create div
                 let prodModal = document.createElement('div');
-                prodModal.classList.add('prod-modal')  
+                prodModal.classList.add('prod-modal')
                 // assing div values
                 prodModal.innerHTML = `
                 <div class='close-modal'>Close</div>
@@ -195,10 +194,12 @@ class UI {
                 <h3>${prodFromArr.title}</h3>
                 <p class='price'>$${prodFromArr.price}</p>
                 <p class='desc'>${prodFromArr.desc}</p>
-                <button class='bag-btn btn btn-primary' data-id=${id}>Quick Add</button>
+                <button class='modal-btn btn btn-primary' data-id=${id}>Add to Cart</button>
                 `
                 //append
                 prodModalOverlay.appendChild(prodModal)
+                // 
+                this.modalBtnLogic(btn, cart);
                 // close modal
                 document.querySelector('.close-modal').addEventListener('click', () => {
                     prodModalOverlay.style.display = 'none';
@@ -206,6 +207,30 @@ class UI {
                 })
             })
         })
+    }
+    modalBtnLogic(btn, cart) {
+        let id = btn.dataset.id;
+        let currentModalBtn = document.querySelector('.modal-btn');
+        let inCart = cart.find(prod => prod.id === id);
+        if (inCart) {
+            currentModalBtn.innerText = 'Item in Cart';
+            currentModalBtn.disabled = true;
+        }
+        // currentModalBtn.addEventListener('click', () => {
+        //     prodModalOverlay.style.display = 'none';
+        //     currentModalBtn.innerText = 'Item Added';
+        //     currentModalBtn.disabled = true;
+        //     let btnId = currentModalBtn.dataset.id;
+        //     // Get Product from products 
+        //     let cartItem = {
+        //         ...Storage.getProduct(btnId),
+        //         amount: 1
+        //     };
+        //     // add product to the cart
+        //     cart = [...cart, cartItem];
+        //     // save the cart in the local storage
+
+        // })
     }
     populateCart(cart) {
         cart.forEach(item => this.addCartItem(item));
