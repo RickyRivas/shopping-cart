@@ -1,10 +1,10 @@
-let contentfulToken, contentfulSpace;
+
 const getVars = async () => {
     fetch('/.netlify/functions/provide-vars')
         .then(response => {
-            contentfulSpace = response.space;
+          let contentfulSpace = response.space;
             console.log(contentfulSpace);
-            contentfulToken = response.token;
+           let contentfulToken = response.token;
             console.log(contentfulToken)
         })
         .catch(err => {

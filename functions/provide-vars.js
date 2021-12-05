@@ -1,12 +1,9 @@
-const accessToken = process.env.ACCESS_TOKEN;
-const spaceId = process.env.SPACE_ID;
-
-exports.handler = async () => {
+exports.handler = () => {
     return {
         statusCode: 200,
         body: JSON.stringify({
-            token: accessToken,
-            space: spaceId
+            token: process.env.ACCESS_TOKEN,
+            space: process.env.SPACE_ID
         }),
     };
 }
