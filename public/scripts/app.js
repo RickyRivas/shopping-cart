@@ -229,8 +229,7 @@ class UI {
     getSingleButton(id) {
         return buttonsDOM.find(button => button.dataset.id === id)
     }
-    callStripe() {
-        purchaseBtn.addEventListener('click', async () => {
+     callStripe = async() =>  {
             const thisCart = cart;
             thisCart.forEach(item => {
                 item.price = item.price * 100;
@@ -257,7 +256,7 @@ class UI {
             }
             const bug = response.text;
             console.log(bug)
-        })
+        
     }
     triggerModal() {
         const prodOverlay = document.querySelectorAll('.prod-modal-overlay');

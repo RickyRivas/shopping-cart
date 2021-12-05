@@ -311,12 +311,15 @@
       justify-content: center;
       align-items: center;
       letter-spacing: 2px;
+      cursor: pointer;
+
       img {
         width: 1rem;
         margin-left: $margin-sm;
       }
       &:disabled {
         opacity: 50%;
+        cursor: not-allowed;
       }
     }
   }
