@@ -8,7 +8,7 @@ const config = async () => {
  
 let configFunc = config();
 let contentToken = configFunc[1];
-let contentSpace = configFunc[2];
+let contentSpace = configFunc[0];
 
 const client = contentful.createClient({
     // space: 'jt4gea9e7d3j',
