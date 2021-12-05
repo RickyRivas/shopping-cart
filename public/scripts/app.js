@@ -1,6 +1,6 @@
 
 const getVars = async () => {
-   await fetch('/.netlify/functions/provide-vars')
+    fetch('/.netlify/functions/provide-vars')
         .then(response => {
           console.log(response)
         }).then(data => {
