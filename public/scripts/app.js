@@ -176,7 +176,6 @@ class UI {
             }
             prodsRef.push(prodObj)
         });
-        console.log(prodsRef)
         const allViewBtns = document.querySelectorAll('.view-btn');
         allViewBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -198,8 +197,42 @@ class UI {
                 `
                 //append
                 prodModalOverlay.appendChild(prodModal)
-                // 
-                this.modalBtnLogic(btn, cart);
+                // modal btn logic
+                let currentModalBtn = document.querySelector('.modal-btn');
+                let inCart = cart.find(prod => prod.id === id);
+                if (inCart) {
+                    currentModalBtn.innerText = 'Item in Cart';
+                    currentModalBtn.disabled = true;
+                }
+                // modal btn clicked logic
+                currentModalBtn.addEventListener('click', (e) => {
+                    // get btn id
+                    let id = currentModalBtn.dataset.id;
+                    // btn innertext
+                    currentModalBtn.innerText = "Added to Cart"
+                    // Get Product from products 
+                    let cartItem = {
+                        ...Storage.getProduct(id),
+                        amount: 1
+                    };
+                    // save the cart in the local storage
+                    Storage.saveCart(cart);
+                    // set cart values 
+                    this.setCartValues(cart);
+                    // display cart item
+                    this.addCartItem(cartItem);
+                    // add product to the cart
+                    cart = [...cart, cartItem];
+                    // loop through bag btns and change inner text
+                //     const bagButtons = document.querySelectorAll('.bag-btn');
+                //     bagButtons.forEach(bagBtn => {
+                //         let inCart = cart.find(item => item.id === id)
+                //         if (inCart) {
+                //             bagBtn.innerText = "In Cart";
+                //             bagBtn.disabled = true;
+                //         }
+                //     })
+                })
                 // close modal
                 document.querySelector('.close-modal').addEventListener('click', () => {
                     prodModalOverlay.style.display = 'none';
@@ -207,30 +240,6 @@ class UI {
                 })
             })
         })
-    }
-    modalBtnLogic(btn, cart) {
-        let id = btn.dataset.id;
-        let currentModalBtn = document.querySelector('.modal-btn');
-        let inCart = cart.find(prod => prod.id === id);
-        if (inCart) {
-            currentModalBtn.innerText = 'Item in Cart';
-            currentModalBtn.disabled = true;
-        }
-        // currentModalBtn.addEventListener('click', () => {
-        //     prodModalOverlay.style.display = 'none';
-        //     currentModalBtn.innerText = 'Item Added';
-        //     currentModalBtn.disabled = true;
-        //     let btnId = currentModalBtn.dataset.id;
-        //     // Get Product from products 
-        //     let cartItem = {
-        //         ...Storage.getProduct(btnId),
-        //         amount: 1
-        //     };
-        //     // add product to the cart
-        //     cart = [...cart, cartItem];
-        //     // save the cart in the local storage
-
-        // })
     }
     populateCart(cart) {
         cart.forEach(item => this.addCartItem(item));
