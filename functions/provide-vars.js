@@ -1,4 +1,4 @@
-exports.handler = function() {
+exports.handler = function sendVars() {
     const spaceId = process.env.ACCESS_TOKEN;
     const accessToken = process.env.SPACE_ID
     return {
