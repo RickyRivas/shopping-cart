@@ -8,8 +8,8 @@ const getVars = async () => {
         }).catch(err => {
             console.log(err)
         })
-
 }
+
 getVars();
 const client = contentful.createClient({
     space: 'jt4gea9e7d3j',

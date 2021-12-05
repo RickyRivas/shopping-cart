@@ -1,8 +1,11 @@
-exports.handler = async () => {
+exports.handler = function() {
     const spaceId = process.env.ACCESS_TOKEN;
-    // const accessToken = process.env.SPACE_ID
+    const accessToken = process.env.SPACE_ID
     return {
         statusCode: 200,
-        body: JSON.stringify(spaceId)
+        body: JSON.stringify({
+            space: spaceId,
+            token: accessToken
+        })
     }
 }
