@@ -96,6 +96,7 @@
             &:hover {
               opacity: .7;
             }
+
             &:disabled {
               opacity: .7;
               cursor: not-allowed;
@@ -137,7 +138,7 @@
   }
 
   /* ---------------prod modal ---------------- */
-  .prod-modal-overlay {
+  #prod-modal-overlay {
     position: fixed;
     top: 0;
     right: 0;
@@ -145,22 +146,46 @@
     height: 100%;
     background: rgba(0, 0, 0, .7);
     z-index: 23;
-    visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 
     .prod-modal {
       position: relative;
       width: 100%;
       max-width: 500px;
       height: 100%;
-      overflow: scroll;
-      z-index: 30000;
       background: #f9f9f9;
-      transition: all .5s ease-in;
-      padding: $padding-md;
-      opacity: 0;
+      padding: $padding-xl $padding-lg $padding-lg $padding-lg;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+      z-index: 24;
+      overflow-y: scroll;
+
+      img {
+        width: 100%;
+        margin-bottom: $margin-md;
+      }
+      h3 {
+        margin-bottom: $margin-md;
+      }
+      .price {
+        margin-bottom: $margin-md;
+      }
+      .desc {
+        line-height: 1.5;
+        color: $text-color;
+        margin-bottom: $margin-md;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+      }
     }
   }
 
@@ -193,17 +218,20 @@
     justify-content: space-between;
     flex-direction: column;
     padding-bottom: 2rem;
+
     .cart-content {
       width: 100%;
+
       p {
         text-align: center;
       }
-       .empty-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
+
+      .empty-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
     }
 
   }
@@ -310,7 +338,7 @@
   .cart-buttons {
     display: inline-block;
     width: 100%;
-    
+
     .purchase-btn {
       padding: 15px;
       width: 100%;
@@ -328,10 +356,12 @@
         width: 1rem;
         margin-left: $margin-sm;
       }
+
       &:disabled {
         opacity: .70;
         cursor: not-allowed;
       }
+
       &:hover {
         opacity: .70;
       }

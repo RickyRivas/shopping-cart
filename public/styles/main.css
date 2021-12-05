@@ -497,7 +497,7 @@ html {
   border: 0;
   color: white;
   text-decoration: none;
-  margin: 0.5rem;
+  margin-right: 0.5rem;
   -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
           box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   letter-spacing: 2px;
@@ -699,7 +699,7 @@ html {
     opacity: 0.5;
   }
   /* ---------------prod modal ---------------- */
-  .prod-modal-overlay {
+  #prod-modal-overlay {
     position: fixed;
     top: 0;
     right: 0;
@@ -707,7 +707,6 @@ html {
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
     z-index: 23;
-    visibility: hidden;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -717,19 +716,50 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    display: none;
   }
-  .prod-modal-overlay .prod-modal {
+  #prod-modal-overlay .prod-modal {
     position: relative;
     width: 100%;
     max-width: 500px;
     height: 100%;
-    overflow: scroll;
-    z-index: 30000;
     background: #f9f9f9;
-    -webkit-transition: all .5s ease-in;
-    transition: all .5s ease-in;
-    padding: 1rem;
-    opacity: 0;
+    padding: 4rem 2rem 2rem 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    z-index: 24;
+    overflow-y: scroll;
+  }
+  #prod-modal-overlay .prod-modal img {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  #prod-modal-overlay .prod-modal h3 {
+    margin-bottom: 1rem;
+  }
+  #prod-modal-overlay .prod-modal .price {
+    margin-bottom: 1rem;
+  }
+  #prod-modal-overlay .prod-modal .desc {
+    line-height: 1.5;
+    color: #a9a9a9;
+    margin-bottom: 1rem;
+  }
+  #prod-modal-overlay .prod-modal .close-modal {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
   }
   /* --------------- Cart ---------------- */
   .cart-overlay {

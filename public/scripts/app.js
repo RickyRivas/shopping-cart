@@ -1,22 +1,8 @@
 
-const config = async () => {
-    const response = await fetch('/.netlify/functions/provide-vars').then((res) => res.json());
-    console.log(response)
-    let contentToken = response.token;
-    let  contentSpace = response.space
-    return [contentSpace, contentToken]
-}
- 
-let configFunc = config();
-let contentToken = configFunc[1];
-let contentSpace = configFunc[0];
-
-console.log(config[0], config[1])
 const client = contentful.createClient({
-    // space: 'jt4gea9e7d3j',
-    // accessToken: 'MbIRbPfv5jqe4OXc8WRbTUzYDNhNzMHss9oYLGx-Rt0'
-    space: contentSpace,
-    accessToken: contentToken
+    // Public consumption to view products => no need to hide. READ ONLY
+    space: 'jt4gea9e7d3j',
+    accessToken: 'MbIRbPfv5jqe4OXc8WRbTUzYDNhNzMHss9oYLGx-Rt0'
 })
 
 // });
@@ -85,7 +71,7 @@ class UI {
                 <h3>${product.title}</h3>
                 <h4>${product.price}</h4>
                 <div class='btns'>
-                 <button class='view-btn btn btn-light'>View Item</button>
+                 <button class='view-btn btn btn-light' data-id=${product.id}>View Item</button>
                 <button class='bag-btn' data-id=${product.id}>Quick Add</button>
                 </div>
             </article>
@@ -178,6 +164,49 @@ class UI {
         closeCartBtn.addEventListener('click', this.hideCart);
         purchaseBtn.addEventListener('click', this.callStripe);
     }
+    viewProduct(products) {
+        let prodsRef = [];
+        const prodModalOverlay = document.querySelector('#prod-modal-overlay');
+        products.forEach(prod => {
+            const prodObj = {
+                title: prod.title,
+                price: prod.price,
+                id: prod.id,
+                image: prod.image,
+                desc: prod.description
+            }
+            prodsRef.push(prodObj)
+        });
+        console.log(prodsRef)
+        const allViewBtns = document.querySelectorAll('.view-btn');
+        allViewBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                let id = btn.dataset.id;
+                let prodFromArr = prodsRef.find(prodObj => prodObj.id === id);
+                // enable modal
+                prodModalOverlay.style.display = 'flex'
+                // create div
+                let prodModal = document.createElement('div');
+                prodModal.classList.add('prod-modal')  
+                // assing div values
+                prodModal.innerHTML = `
+                <div class='close-modal'>Close</div>
+                <img src=${prodFromArr.image}></img>
+                <h3>${prodFromArr.title}</h3>
+                <p class='price'>$${prodFromArr.price}</p>
+                <p class='desc'>${prodFromArr.desc}</p>
+                <button class='bag-btn btn btn-primary' data-id=${id}>Quick Add</button>
+                `
+                //append
+                prodModalOverlay.appendChild(prodModal)
+                // close modal
+                document.querySelector('.close-modal').addEventListener('click', () => {
+                    prodModalOverlay.style.display = 'none';
+                    prodModalOverlay.removeChild(prodModal);
+                })
+            })
+        })
+    }
     populateCart(cart) {
         cart.forEach(item => this.addCartItem(item));
     }
@@ -256,7 +285,6 @@ class UI {
             },
             body: JSON.stringify(thisCart)
         }).then((res) => res.json());
-        console.log(response)
 
         const stripe = Stripe(response.publishableKey);
         const {
@@ -268,10 +296,6 @@ class UI {
             console.error(error);
         }
 
-    }
-    triggerModal() {
-        const prodOverlay = document.querySelectorAll('.prod-modal-overlay');
-        prodOverlay.style.visibility = 'visible';
     }
 }
 
@@ -301,6 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //Get all products
     products.getProducts().then(products => {
         ui.displayProducts(products);
+        ui.viewProduct(products);
         Storage.saveProducts(products);
     }).then(() => {
         ui.getBagButtons();
