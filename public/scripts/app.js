@@ -1,16 +1,20 @@
-let mySpaceId, myAccessToken
-const config = (x) => {
-    // const response = await fetch('/.netlify/functions/provide-vars').then((res) => res.json());
-    x = 'hey';
-    // y = response.token;
- }
 
-config(mySpaceId);
-console.log(config.x)
+const config = async () => {
+    const response = await fetch('/.netlify/functions/provide-vars').then((res) => res.json());
+    let contentToken = response.token;
+    let  contentSpace = response.space
+    return [contentSpace, contentToken]
+}
+ 
+let configFunc = config();
+let contentToken = configFunc[1];
+let contentSpace = configFunc[2];
 
 const client = contentful.createClient({
-    space: 'jt4gea9e7d3j',
-    accessToken: 'MbIRbPfv5jqe4OXc8WRbTUzYDNhNzMHss9oYLGx-Rt0'
+    // space: 'jt4gea9e7d3j',
+    // accessToken: 'MbIRbPfv5jqe4OXc8WRbTUzYDNhNzMHss9oYLGx-Rt0'
+    space: contentSpace,
+    accessToken: contentToken
 })
 
 // });
