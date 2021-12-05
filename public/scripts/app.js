@@ -1,6 +1,7 @@
 
 const config = async () => {
     const response = await fetch('/.netlify/functions/provide-vars').then((res) => res.json());
+    console.log(response)
     let contentToken = response.token;
     let  contentSpace = response.space
     return [contentSpace, contentToken]
