@@ -3,6 +3,9 @@ exports.handler = function sendVars() {
     const accessToken = process.env.SPACE_ID
     return {
         statusCode: 200,
+        headers: {
+          'content-type': 'application/json',
+        },
         body: JSON.stringify({
             space: spaceId,
             token: accessToken
