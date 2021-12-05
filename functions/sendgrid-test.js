@@ -21,6 +21,9 @@ exports.handler = async () => {
         })
     return {
         statusCode: 200,
-        body: JSON.stringify(msg)
+        body: JSON.stringify({
+            thisMsh: msg,
+            mail: sgMail
+        })
     }
 }
