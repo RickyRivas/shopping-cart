@@ -1,9 +1,8 @@
 
 
 const getVars = async () => {
-    const response = await fetch('/.netlify/functions/create-checkout');
-    console.log(response);
-    
+    const response = await fetch('/.netlify/functions/create-checkout').then(res => res.json())
+    console.log(response)
 }
 getVars();
 const client = contentful.createClient({
@@ -242,8 +241,6 @@ class UI {
             thisCart.forEach(item => {
                 item.price = item.price * 100;
             })
-            console.log(cart)
-            //    const finalCartItems = cart;
             const response = await fetch('/.netlify/functions/create-checkout', {
                 method: 'POST',
                 headers: {
@@ -262,8 +259,6 @@ class UI {
             if (error) {
                 console.error(error);
             }
-            const bug = response.text;
-            console.log(bug)
         
     }
     triggerModal() {
