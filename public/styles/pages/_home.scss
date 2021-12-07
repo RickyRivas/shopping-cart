@@ -185,14 +185,23 @@
         margin-bottom: $margin-md;
       }
 
-      .modal-btn {
-        &:hover {
-          opacity: .7;
-        }
+      .btns {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .modal-btn {
+          margin-bottom: $margin-md;
+          width: 100%;
+          &:hover {
+            opacity: .7;
+          }
 
-        &:disabled {
-          opacity: .7;
-          cursor: not-allowed;
+          &:disabled {
+            opacity: .7;
+            cursor: not-allowed;
+          }
         }
       }
 

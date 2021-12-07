@@ -193,7 +193,13 @@ class UI {
                 <h3>${prodFromArr.title}</h3>
                 <p class='price'>$${prodFromArr.price}</p>
                 <p class='desc'>${prodFromArr.desc}</p>
+                <div class='btns'>
                 <button class='modal-btn btn btn-primary' data-id=${id}>Add to Cart</button>
+                Or
+                  <div id="payment-request-button">
+                <!-- A Stripe Element will be inserted here. -->
+                </div>
+                </div>
                 `
                 //append
                 prodModalOverlay.appendChild(prodModal)
@@ -204,35 +210,6 @@ class UI {
                     currentModalBtn.innerText = 'Item in Cart';
                     currentModalBtn.disabled = true;
                 }
-                // modal btn clicked logic
-                currentModalBtn.addEventListener('click', (e) => {
-                    // get btn id
-                    let id = currentModalBtn.dataset.id;
-                    // btn innertext
-                    currentModalBtn.innerText = "Added to Cart"
-                    // Get Product from products 
-                    let cartItem = {
-                        ...Storage.getProduct(id),
-                        amount: 1
-                    };
-                    // save the cart in the local storage
-                    Storage.saveCart(cart);
-                    // set cart values 
-                    this.setCartValues(cart);
-                    // display cart item
-                    this.addCartItem(cartItem);
-                    // add product to the cart
-                    cart = [...cart, cartItem];
-                    // loop through bag btns and change inner text
-                    //     const bagButtons = document.querySelectorAll('.bag-btn');
-                    //     bagButtons.forEach(bagBtn => {
-                    //         let inCart = cart.find(item => item.id === id)
-                    //         if (inCart) {
-                    //             bagBtn.innerText = "In Cart";
-                    //             bagBtn.disabled = true;
-                    //         }
-                    //     })
-                })
                 // close modal
                 document.querySelector('.close-modal').addEventListener('click', () => {
                     prodModalOverlay.style.display = 'none';

@@ -757,10 +757,30 @@ html {
     color: #a9a9a9;
     margin-bottom: 1rem;
   }
-  #prod-modal-overlay .prod-modal .modal-btn:hover {
+  #prod-modal-overlay .prod-modal .btns {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #prod-modal-overlay .prod-modal .btns .modal-btn {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  #prod-modal-overlay .prod-modal .btns .modal-btn:hover {
     opacity: .7;
   }
-  #prod-modal-overlay .prod-modal .modal-btn:disabled {
+  #prod-modal-overlay .prod-modal .btns .modal-btn:disabled {
     opacity: .7;
     cursor: not-allowed;
   }
