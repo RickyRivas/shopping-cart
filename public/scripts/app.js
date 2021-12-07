@@ -336,10 +336,10 @@ class UI {
 }
 class Stripe {
     callStripe = async () => {
-        const response = await fetch('/.netlify/functions/prov-vars').then((res) => res.json());
+        const response = await fetch('/.netlify/functions/provide-vars').then((res) => res.json());
         console.log(response)
-        const publicKey = response.pk;
-        console.log(publicKey)
+        const publicTestKey = response.publicKey;
+        console.log(publicTestKey)
      }
  } 
 // Local Storage
