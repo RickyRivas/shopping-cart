@@ -423,7 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ui.displayProducts(products);
         ui.viewProduct(products);
         Storage.saveProducts(products);
-        elements.callStripe(products);
+        Elements.callStripe(products);
     }).then(() => {
         ui.getBagButtons();
         ui.cartLogic();
