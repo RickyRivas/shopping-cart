@@ -5,7 +5,7 @@ exports.handler = async () => {
           'content-type': 'application/json',
         },
         body: JSON.stringify({
-            publickey: process.env.STRIPE_PUBLISHABLE_KEY,
+            publicKey: process.env.STRIPE_PUBLISHABLE_KEY,
         })
     }
 }
