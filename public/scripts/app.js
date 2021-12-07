@@ -332,7 +332,12 @@ class UI {
         this.callSendgrid();
     }
 }
-
+class Stripe {
+    async callStripe() {
+        const response = await fetch('/.netlify/functions/prov-vars').then(res => res.JSON());
+        console.log(response)
+     }
+ } 
 // Local Storage
 class Storage {
     static saveProducts(products) {
@@ -354,6 +359,7 @@ class Storage {
 document.addEventListener('DOMContentLoaded', () => {
     const ui = new UI()
     const products = new Products()
+    const stripe = new Stripe();
     // setup application
     ui.setupApp();
     //Get all products
@@ -364,5 +370,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }).then(() => {
         ui.getBagButtons();
         ui.cartLogic();
+        stripe.callStripe();
     });
 });
