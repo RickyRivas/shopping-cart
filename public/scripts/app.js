@@ -312,7 +312,7 @@ class UI {
     }
 }
 class Elements {
-    callStripe = async (products) => {
+   static callStripe = async (products) => {
         let prods = products;
         console.log(products)
         const response = await fetch('/.netlify/functions/stripe-ele').then((res) => res.json());
