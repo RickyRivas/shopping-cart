@@ -189,7 +189,7 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        align-items: center;
+        text-align: center;
         flex-direction: column;
         .modal-btn {
           margin-bottom: $margin-md;
@@ -202,6 +202,9 @@
             opacity: .7;
             cursor: not-allowed;
           }
+        }
+        p {
+          margin-bottom: $margin-md;
         }
       }
 

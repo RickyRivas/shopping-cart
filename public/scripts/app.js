@@ -195,7 +195,7 @@ class UI {
                 <p class='desc'>${prodFromArr.desc}</p>
                 <div class='btns'>
                 <button class='modal-btn btn btn-primary' data-id=${id}>Add to Cart</button>
-                Or
+                <p>Or</p>
                   <div id="payment-request-button">
                 <!-- A Stripe Element will be inserted here. -->
                 </div>
