@@ -337,8 +337,9 @@ class Elements {
         let prods = products;
         console.log(prods)
         const response = await fetch('/.netlify/functions/stripe-ele').then((res) => res.json());
-        let stripe = Stripe(response.publishableKey);
         console.log(response)
+        let stripe = Stripe(response.publishableKey);
+        console.log(stripe)
         // create and mount 
         let elements = stripe.elements();
         let prButton = elements.create('paymentRequestButton', {
