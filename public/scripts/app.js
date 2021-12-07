@@ -352,7 +352,21 @@ class Elements {
         // create and mount 
         let elements = stripe.elements();
         let prButton = elements.create('paymentRequestButton', {
-            paymentRequest: paymentRequest
+            paymentRequest: paymentRequest,
+            style: {
+                paymentRequestButton: {
+                    type: 'default',
+                    // One of 'default', 'book', 'buy', or 'donate'
+                    // Defaults to 'default'
+
+                    theme: 'dark',
+                    // One of 'dark', 'light', or 'light-outline'
+                    // Defaults to 'dark'
+
+                    height: '64px'
+                    // Defaults to '40px'. The width is always '100%'.
+                },
+            },
         });
         // check availbibility of api
         paymentRequest.canMakePayment().then((result) => {
@@ -399,23 +413,6 @@ class Elements {
                 }
             });
         })
-        elements.create('paymentRequestButton', {
-            paymentRequest: paymentRequest,
-            style: {
-                paymentRequestButton: {
-                    type: 'default',
-                    // One of 'default', 'book', 'buy', or 'donate'
-                    // Defaults to 'default'
-
-                    theme: 'dark',
-                    // One of 'dark', 'light', or 'light-outline'
-                    // Defaults to 'dark'
-
-                    height: '64px'
-                    // Defaults to '40px'. The width is always '100%'.
-                },
-            },
-        });
     }
 }
 // Local Storage
