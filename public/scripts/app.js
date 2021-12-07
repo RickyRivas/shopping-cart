@@ -1,5 +1,3 @@
-
-
 const client = contentful.createClient({
     // Public consumption to view products => no need to hide. READ ONLY
     space: 'jt4gea9e7d3j',
@@ -226,14 +224,14 @@ class UI {
                     // add product to the cart
                     cart = [...cart, cartItem];
                     // loop through bag btns and change inner text
-                //     const bagButtons = document.querySelectorAll('.bag-btn');
-                //     bagButtons.forEach(bagBtn => {
-                //         let inCart = cart.find(item => item.id === id)
-                //         if (inCart) {
-                //             bagBtn.innerText = "In Cart";
-                //             bagBtn.disabled = true;
-                //         }
-                //     })
+                    //     const bagButtons = document.querySelectorAll('.bag-btn');
+                    //     bagButtons.forEach(bagBtn => {
+                    //         let inCart = cart.find(item => item.id === id)
+                    //         if (inCart) {
+                    //             bagBtn.innerText = "In Cart";
+                    //             bagBtn.disabled = true;
+                    //         }
+                    //     })
                 })
                 // close modal
                 document.querySelector('.close-modal').addEventListener('click', () => {
@@ -336,11 +334,73 @@ class UI {
 }
 class Elements {
     callStripe = async () => {
-        // const response = await fetch('/.netlify/functions/provide-vars').then((res) => res.json());
-        // const publicTestKey = response.publicKey;
-        console.log(cart)
-     }
- } 
+        const response = await fetch('/.netlify/functions/stripe-ele').then((res) => res.json());
+        const publicKey = response.publishableKey;
+        console.log(publicKey)
+        // payment req
+        let paymentRequest = stripe.paymentRequest({
+            country: 'US',
+            currency: 'usd',
+            total: {
+                label: 'Demo total',
+                amount: 1099,
+            },
+            requestPayerName: true,
+            requestPayerEmail: true,
+        });
+        // create and mount 
+        let elements = stripe.elements();
+        let prButton = elements.create('paymentRequestButton', {
+            paymentRequest: paymentRequest
+        });
+        // check availbibility of api
+        paymentRequest.canMakePayment().then((result) => {
+            if (result) {
+                prButton.mount('#payment-request-button')
+            } else {
+                document.getElementById('payment-request-button').style.display = 'none';
+            }
+        })
+        // complete payment
+        paymentRequest.on('paymentmethod', (ev) => {
+            // Confirm the PaymentIntent without handling potential next actions (yet).
+            stripe.confirmCardPayment(
+                clientSecret, {
+                    payment_method: ev.paymentMethod.id
+                }, {
+                    handleActions: false
+                }
+            ).then(function (confirmResult) {
+                if (confirmResult.error) {
+                    // Report to the browser that the payment failed, prompting it to
+                    // re-show the payment interface, or show an error message and close
+                    // the payment interface.
+                    ev.complete('fail');
+                } else {
+                    // Report to the browser that the confirmation was successful, prompting
+                    // it to close the browser payment method collection interface.
+                    ev.complete('success');
+                    // Check if the PaymentIntent requires any actions and if so let Stripe.js
+                    // handle the flow. If using an API version older than "2019-02-11"
+                    // instead check for: `paymentIntent.status === "requires_source_action"`.
+                    if (confirmResult.paymentIntent.status === "requires_action") {
+                        // Let Stripe.js handle the rest of the payment flow.
+                        stripe.confirmCardPayment(clientSecret).then(function (result) {
+                            if (result.error) {
+                                // The payment failed -- ask your customer for a new payment method.
+                            } else {
+                                // The payment has succeeded.
+                            }
+                        });
+                    } else {
+                        // The payment has succeeded.
+                    }
+                }
+            });
+        })
+
+    }
+}
 // Local Storage
 class Storage {
     static saveProducts(products) {
