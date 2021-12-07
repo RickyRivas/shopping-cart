@@ -203,6 +203,8 @@ class UI {
                 `
                 //append
                 prodModalOverlay.appendChild(prodModal)
+                // call 
+                Elements.callStripe();
                 // modal btn logic
                 let currentModalBtn = document.querySelector('.modal-btn');
                 let inCart = cart.find(prod => prod.id === id);
