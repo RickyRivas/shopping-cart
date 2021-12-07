@@ -1,4 +1,4 @@
-const { adoptStyles } = require("lit");
+
 
 const client = contentful.createClient({
     // Public consumption to view products => no need to hide. READ ONLY
@@ -338,6 +338,8 @@ class Stripe {
     callStripe = async () => {
         const response = await fetch('/.netlify/functions/prov-vars').then((res) => res.json());
         console.log(response)
+        const publicKey = response.pk;
+        console.log(publicKey)
      }
  } 
 // Local Storage
