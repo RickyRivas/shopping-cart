@@ -335,12 +335,10 @@ class UI {
 class Elements {
     callStripe = async (products) => {
         let prods = products;
-        console.log(prods)
+        console.log(products)
         const response = await fetch('/.netlify/functions/stripe-ele').then((res) => res.json());
-        console.log(response)
         let stripe = Stripe(response.publishableKey);
-        console.log(stripe)
-         // payment req
+        // payment req
         let paymentRequest = stripe.paymentRequest({
             country: 'US',
             currency: 'usd',
@@ -401,7 +399,23 @@ class Elements {
                 }
             });
         })
+        elements.create('paymentRequestButton', {
+            paymentRequest: paymentRequest,
+            style: {
+                paymentRequestButton: {
+                    type: 'default',
+                    // One of 'default', 'book', 'buy', or 'donate'
+                    // Defaults to 'default'
 
+                    theme: 'dark',
+                    // One of 'dark', 'light', or 'light-outline'
+                    // Defaults to 'dark'
+
+                    height: '64px'
+                    // Defaults to '40px'. The width is always '100%'.
+                },
+            },
+        });
     }
 }
 // Local Storage
