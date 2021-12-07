@@ -1,3 +1,5 @@
+const { adoptStyles } = require("lit");
+
 const client = contentful.createClient({
     // Public consumption to view products => no need to hide. READ ONLY
     space: 'jt4gea9e7d3j',
@@ -333,8 +335,8 @@ class UI {
     }
 }
 class Stripe {
-    async callStripe() {
-        const response = await fetch('/.netlify/functions/prov-vars').then((res) => res.JSON());
+    callStripe = async () => {
+        const response = await fetch('/.netlify/functions/prov-vars').then((res) => res.json());
         console.log(response)
      }
  } 
