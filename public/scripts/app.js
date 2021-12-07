@@ -333,10 +333,17 @@ class UI {
     }
 }
 class Elements {
-    callStripe = async () => {
+    callStripe = async (products) => {
+        let prods = products;
+        console.log(prods)
         const response = await fetch('/.netlify/functions/stripe-ele').then((res) => res.json());
-        const publicKey = response.publishableKey;
-        console.log(publicKey)
+        let stripe = Stripe(response.publishableKey);
+        console.log(response)
+        // create and mount 
+        let elements = stripe.elements();
+        let prButton = elements.create('paymentRequestButton', {
+            paymentRequest: paymentRequest
+        });
         // payment req
         let paymentRequest = stripe.paymentRequest({
             country: 'US',
@@ -347,11 +354,6 @@ class Elements {
             },
             requestPayerName: true,
             requestPayerEmail: true,
-        });
-        // create and mount 
-        let elements = stripe.elements();
-        let prButton = elements.create('paymentRequestButton', {
-            paymentRequest: paymentRequest
         });
         // check availbibility of api
         paymentRequest.canMakePayment().then((result) => {
