@@ -340,12 +340,7 @@ class Elements {
         console.log(response)
         let stripe = Stripe(response.publishableKey);
         console.log(stripe)
-        // create and mount 
-        let elements = stripe.elements();
-        let prButton = elements.create('paymentRequestButton', {
-            paymentRequest: paymentRequest
-        });
-        // payment req
+         // payment req
         let paymentRequest = stripe.paymentRequest({
             country: 'US',
             currency: 'usd',
@@ -355,6 +350,11 @@ class Elements {
             },
             requestPayerName: true,
             requestPayerEmail: true,
+        });
+        // create and mount 
+        let elements = stripe.elements();
+        let prButton = elements.create('paymentRequestButton', {
+            paymentRequest: paymentRequest
         });
         // check availbibility of api
         paymentRequest.canMakePayment().then((result) => {
