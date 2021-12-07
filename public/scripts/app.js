@@ -334,7 +334,7 @@ class UI {
 }
 class Stripe {
     async callStripe() {
-        const response = await fetch('/.netlify/functions/prov-vars').then(res => res.JSON());
+        const response = await fetch('/.netlify/functions/prov-vars').then((res) => res.JSON());
         console.log(response)
      }
  } 
