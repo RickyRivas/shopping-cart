@@ -347,6 +347,7 @@ class Elements {
                 },
             },
         });
+       prButton.mount('#payment-request-button');
         // check availbibility of api
         paymentRequest.canMakePayment().then((result) => {
             if (result) {
@@ -423,7 +424,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ui.displayProducts(products);
         ui.viewProduct(products);
         Storage.saveProducts(products);
-        Elements.callStripe(products);
     }).then(() => {
         ui.getBagButtons();
         ui.cartLogic();

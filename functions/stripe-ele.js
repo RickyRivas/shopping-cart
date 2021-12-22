@@ -8,7 +8,7 @@ exports.handler = async () => {
         domain_name: 'https://rwds1.netlify.app/',
     });
     const paymentIntent = await stripe.paymentIntents.create({
-        amount: 1099,
+        amount: 1299,
         currency: 'usd'
     })
     return {

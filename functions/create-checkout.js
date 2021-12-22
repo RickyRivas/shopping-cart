@@ -22,6 +22,11 @@ exports.handler = async (e) => {
           images: [cartItem.image],
         }
       },
+      adjustable_quantity: {
+        enabled: true,
+        minimum: 1,
+        maximum: 99,
+      },
       quantity: cartItem.amount
     }
     const productMetaData = {
