@@ -4,23 +4,23 @@
  *
  * @see https://stripe.com/docs/payments/checkout/fulfillment#webhooks
  */
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2020-03-02',
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
+  apiVersion: "2020-03-02",
   maxNetworkRetries: 2,
 });
 
-const sgMail = require('@sendgrid/mail');
+const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.handler = async ({ body, headers }) => {
   try {
     const stripeEvent = stripe.webhooks.constructEvent(
       body,
-      headers['stripe-signature'],
+      headers["stripe-signature"],
       process.env.STRIPE_WEBHOOK_SECRET
     );
 
-    if (stripeEvent.type === 'checkout.session.completed') {
+    if (stripeEvent.type === "checkout.session.completed") {
       const eventObject = stripeEvent.data.object;
       const items = JSON.parse(eventObject.metadata.items);
       const shippingDetails = eventObject.shipping;
@@ -34,7 +34,7 @@ exports.handler = async ({ body, headers }) => {
         from: process.env.FROM_EMAIL_ADDRESS,
         subject: `New purchase from ${shippingDetails.name}`,
         text: JSON.stringify(purchase, null, 2),
-        html: '<strong>Long live Rivas Web Designs!</strong>',
+        html: "<strong></strong>",
       };
       await sgMail.send(msg);
     }
@@ -52,5 +52,3 @@ exports.handler = async ({ body, headers }) => {
     };
   }
 };
-// we_1K3SyrEDwXdr12pLI8CT2WJT
-// whsec_8y45pv8rJOqniSMzDi69m7pRjnfsMKt2

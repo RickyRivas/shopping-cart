@@ -7,7 +7,7 @@
       "fields": {
         "title": "2021 Silver Eagle",
         "price": 10.99,
-        "image": "https://newlifeministries.s3.us-east-2.amazonaws.com/coin.png"
+        "image": ""
       }
     },
     {
@@ -17,7 +17,7 @@
       "fields": {
         "title": "1922 Morgan",
         "price": 12.99,
-        "image": "https://newlifeministries.s3.us-east-2.amazonaws.com/coin04.jpeg"
+        "image": ""
       }
     },
     {
@@ -27,7 +27,7 @@
       "fields": {
         "title": "Silver 2 oz",
         "price": 12.99,
-        "image": "https://newlifeministries.s3.us-east-2.amazonaws.com/img05.jpg"
+        "image": ""
       }
     }
   ]
